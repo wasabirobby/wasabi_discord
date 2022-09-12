@@ -4,7 +4,7 @@ This resource was created as a standalone free resource for obtaining informatio
 
 ## Installation/Documentation
 
-LINK COMING SOON
+https://wasabirobby.gitbook.io/wasabi-scripts/scripts/ws_discordapi
 
 ## Requirements
 
