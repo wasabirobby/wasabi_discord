@@ -9,7 +9,7 @@ Config.DiscordInfo = {
 }
 
 Config.DiscordWhitelist = { -- Restrict if someone can fly in if they lack specific Discord role(s)
-    enabled = true, -- Enable?
+    enabled = false, -- Enable?
     deniedMessage = 'https://discord.gg/jsd : Join our Discord server and verify to play!', -- Message for those who lack whitelisted role(s)
     whitelistedRoles = {
       --'ROLE_ID_HERE',  
