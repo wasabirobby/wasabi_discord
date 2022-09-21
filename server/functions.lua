@@ -48,7 +48,7 @@ checkDiscordRole = function(servId, role)
     end
 end
 
-lib.callback.register('ws_discordapi:checkForRole', function(source, role)
+lib.callback.register('ws_discord:checkForRole', function(source, role)
     local hasRole = checkDiscordRole(source, role)
     return hasRole
 end)
