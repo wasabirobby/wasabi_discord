@@ -28,7 +28,7 @@ checkDiscordRole = function(servId, role)
         discRole = tostring(role)
     end
     if discId then
-        local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.serverId, discId)
+        local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, discId)
         local member = discordRequest("GET", endpoint, {})
         if member.code == 200 then
             local data = json.decode(member.data)
