@@ -1,6 +1,6 @@
-# ws_discordapi
+# ws_discord
 
-This resource was created as a standalone free resource for obtaining information from your Discord server via Discord's API
+This resource was created as a standalone free resource for obtaining information from your Discord server via Discord's API as well as additional features to further integrate your FiveM server/Discord server.
 
 ## Installation/Documentation
 
