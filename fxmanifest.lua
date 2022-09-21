@@ -2,11 +2,11 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-description 'Wasabi Discord API'
+description 'Wasabi Discord Wrapper'
 
 lua54 'yes'
 
-version '0.0.1'
+version '0.0.2'
 
 client_scripts {
   'client/*.lua'
