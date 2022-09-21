@@ -5,7 +5,7 @@ Config = {}
 
 Config.DiscordInfo = {
     botToken = 'DISCORD_BOT_TOKEN', -- Your Discord bot token here
-    serverId = 'DISCORD_SERVER_ID', -- Your Discord's server ID here(Aka Guild ID)
+    guildID = 'DISCORD_GUID_ID', -- Your Discord's server ID here(Aka Guild ID)
 }
 
 Config.DiscordWhitelist = { -- Restrict if someone can fly in if they lack specific Discord role(s)
