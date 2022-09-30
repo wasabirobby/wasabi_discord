@@ -14,4 +14,4 @@ https://wasabirobby.gitbook.io/wasabi-scripts/scripts/ws_discordapi
 As long as this message is here, this resource is WIP and not tested nor recommended for use *yet*.
 
 # Support
-Join our discord <a href='https://discord.gg/XJFNyMy3Bv'>HERE</a> for additional scripts and support!
+<a href='https://discord.gg/79zjvy4JMs'>![Discord Banner 2](https://discordapp.com/api/guilds/1025493337031049358/widget.png?style=banner2)</a>
