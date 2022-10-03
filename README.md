@@ -1,17 +1,13 @@
 # ws_discord
 
-This resource was created as a standalone free resource for obtaining information from your Discord server via Discord's API as well as additional features to further integrate your FiveM server/Discord server.
+This resource was created as a standalone free actively updated Discord Wrapper. Intended as a feature rich and secure alternative to abandoned projects previously.
 
 ## Installation/Documentation
 
-https://wasabirobby.gitbook.io/wasabi-scripts/scripts/ws_discordapi
-
-## Requirements
-
-- ox_lib: https://github.com/overextended/ox_lib/releases
+https://wasabirobby.gitbook.io/wasabi-scripts/scripts/ws_discord
 
 ### Extra Information
-As long as this message is here, this resource is WIP and not tested nor recommended for use *yet*.
+This resource is still WIP but will be actively updated.
 
 # Support
 <a href='https://discord.gg/79zjvy4JMs'>![Discord Banner 2](https://discordapp.com/api/guilds/1025493337031049358/widget.png?style=banner2)</a>
