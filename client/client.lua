@@ -2,9 +2,22 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-checkForRole = function(roleId)
-    local hasPerms = lib.callback.await('ws_discord:checkForRole', 100, roleId)
-    return hasPerms
-end
+Config = nil
 
-exports('checkForRole', checkForRole)
+CreateThread(function()
+	local config = lib.callback.await('ws_discord:getConfig', 100)
+	Config = config
+	while Config == nil do
+		Wait(5)
+	end
+	if Config.DiscordQueue.enabled then
+		players, connectInfo = {}, {}
+		local firstSpawn = true
+		AddEventHandler("playerSpawned", function()
+			if firstSpawn then
+				TriggerServerEvent('ws_discord:removeFromQueue')
+				firstSpawn = false
+			end
+		end)
+	end
+end)
