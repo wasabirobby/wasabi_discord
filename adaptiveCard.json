@@ -1,0 +1,80 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.3",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Wasabi Scripts",
+            "wrap": true,
+            "horizontalAlignment": "Center",
+            "separator": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Image",
+            "url": "https://i.imgur.com/i0CI67V.gif",
+            "size": "Large",
+            "horizontalAlignment": "Center",
+            "width": "512px",
+            "height": "300px"
+        },
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Current Queue",
+                    "wrap": true,
+                    "horizontalAlignment": "Center",
+                    "size": "Large",
+                    "weight": "Bolder",
+                    "separator": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "[1] - wasabirobby - Staff",
+                    "wrap": true,
+                    "weight": "Bolder",
+                    "size": "Large"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Current Queue: 5 | Total Online: 26/64",
+            "wrap": true,
+            "horizontalAlignment": "Center",
+            "weight": "Bolder",
+            "size": "Large"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Visit our web store to reserve a priority queue!",
+            "wrap": true,
+            "horizontalAlignment": "Center",
+            "fontType": "Monospace",
+            "weight": "Bolder"
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.OpenUrl",
+                    "title": "Webstore",
+                    "iconUrl": "https://i.imgur.com/8msLEGN.png",
+                    "url": "https://wasabi-scripts.tebex.io/"
+                },
+                {
+                    "type": "Action.OpenUrl",
+                    "title": "Discord",
+                    "iconUrl": "https://i.imgur.com/4a1Rdgf.png",
+                    "url": "https://discord.gg/wasabiscripts"
+                }
+            ],
+            "horizontalAlignment": "Center"
+        }
+    ]
+}
