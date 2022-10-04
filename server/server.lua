@@ -20,7 +20,7 @@ if Config.DiscordWhitelist.enabled then
         if whitelisted then
             deferrals.done()
         else
-            deferrals.done(Config.DiscordWhitelist.deniedMessage)
+            setKickReason(Config.DiscordWhitelist.deniedMessage)
         end
     end)
 end
@@ -40,8 +40,8 @@ if Config.DiscordQueue.enabled then
             end
         end
         if not discordId then
-            deferrals.done(Config.DiscordQueue.strings.noDiscord)
-            return
+            setKickReason(Config.DiscordQueue.strings.noDiscord)
+            CancelEvent()
         end
         if not processQueue(discordId, deferrals, _source) then
             CancelEvent()
