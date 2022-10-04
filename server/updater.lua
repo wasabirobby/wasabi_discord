@@ -3,17 +3,17 @@
 ---------------------------------------------------------------
 
 local curVersion = GetResourceMetadata(GetCurrentResourceName(), "version")
-local resourceName = "ws_discord"
+local resourceName = "wasabi_discord"
 
 CreateThread(function()
-    if GetCurrentResourceName() ~= "ws_discord" then
-        resourceName = "ws_discord (" .. GetCurrentResourceName() .. ")"
+    if GetCurrentResourceName() ~= "wasabi_discord" then
+        resourceName = "wasabi_discord (" .. GetCurrentResourceName() .. ")"
     end
 end)
 
 CreateThread(function()
     while true do
-        PerformHttpRequest("https://api.github.com/repos/wasabirobby/ws_discord/releases/latest", CheckVersion, "GET")
+        PerformHttpRequest("https://api.github.com/repos/wasabirobby/wasabi_discord/releases/latest", CheckVersion, "GET")
         Wait(3600000)
     end
 end)
@@ -39,7 +39,7 @@ end
 GetRepoInformations = function()
     local repoVersion, repoURL, repoBody = nil, nil, nil
 
-    PerformHttpRequest("https://api.github.com/repos/wasabirobby/ws_discord/releases/latest", function(err, response, headers)
+    PerformHttpRequest("https://api.github.com/repos/wasabirobby/wasabi_discord/releases/latest", function(err, response, headers)
         if err == 200 then
             local data = json.decode(response)
 
@@ -48,7 +48,7 @@ GetRepoInformations = function()
             repoBody = data.body
         else
             repoVersion = curVersion
-            repoURL = "https://github.com/wasabirobby/ws_discord"
+            repoURL = "https://github.com/wasabirobby/wasabi_discord"
         end
     end, "GET")
 
