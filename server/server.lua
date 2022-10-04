@@ -133,12 +133,10 @@ if Config.DiscordQueue.enabled then
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
-        print(memberRaw.code)
         if memberRaw.code == 404 then
             deferrals.done(strings.notInDiscord)
             return
         elseif memberRaw.code ~= 200 then
-            print('Line 144')
             deferrals.done(strings.error)
             return
         end
@@ -182,7 +180,7 @@ if Config.DiscordQueue.enabled then
             end
             local currentMessage = currentMsg()
             deferrals.presentCard(currentMessage, function(data, rawData) end)
-            Wait(0)
+            Wait(Config.DiscordQueue.refreshTime)
         until stop
         deferrals.done()
         return true
