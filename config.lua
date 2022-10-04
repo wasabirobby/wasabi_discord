@@ -74,7 +74,7 @@ Config.DiscordQueue = {
         verifyLauncher = '[ws_discord] Verifying Launcher...',
         verifyDiscord = '[ws_discord] Verifying Discord...',
         verifyQueue = '[ws_discord] Adding to queue...',
-
+        notInDiscord = '[ws_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
         noDiscord = '[ws_discord] You must have Discord downloaded, installed, and running to connect!',
         error = '[ws_discord] An error has occured, please try again!'
         
