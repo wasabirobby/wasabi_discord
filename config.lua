@@ -18,7 +18,7 @@ Config.DiscordWhitelist = { -- Restrict if someone can fly in if they lack speci
 }
 
 Config.DiscordQueue = {
-    enabled = false, -- Enable? Requires
+    enabled = true, -- Enable? Requires
     maxConnections = 64, -- How many slots do you have avaliable in total for server
     title = 'Wasabi Scripts', -- Maybe server name here?
 
@@ -51,31 +51,33 @@ Config.DiscordQueue = {
     roles = {
 
         { -- This ones provided by default are purely for example
-            name = "Citizen", -- Name you want displayed as role on queue card
-            roleId = "ROLE_ID_HERE", -- Role ID of role
+            name = 'Citizen', -- Name you want displayed as role on queue card
+            roleId = 'ROLE_ID_HERE', -- Role ID of role
             points = 0 -- Points to add to queue(Higher the number, higher the queue)
         },
 
         {
-            name = "Premium Citizen",
-            roleId = "ROLE_ID_HERE",
+            name = 'Premium Citizen',
+            roleId = 'ROLE_ID_HERE',
             points = 10
         },
 
         {
-            name = "Staff",
-            roleId = "ROLE_ID_HERE",
+            name = 'Staff',
+            roleId = 'ROLE_ID_HERE',
             points = 60
         },
 
-    },
-    strings = {
-        verifyConnection = '[wasabi_discord] Verifying connection...',
-        verifyLauncher = '[wasabi_discord] Verifying Launcher...',
-        verifyDiscord = '[wasabi_discord] Verifying Discord...',
-        verifyQueue = '[wasabi_discord] Adding to queue...',
-        notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
-        noDiscord = '[wasabi_discord] You must have Discord downloaded, installed, and running to connect!',
-        error = '[wasabi_discord] An error has occured, please try again!'
     }
+}
+
+strings = {
+    verifyConnection = '[wasabi_discord] Verifying connection...',
+    verifyLauncher = '[wasabi_discord] Verifying Launcher...',
+    verifyDiscord = '[wasabi_discord] Verifying Discord...',
+    verifyQueue = '[wasabi_discord] Adding to queue...',
+    notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
+    noDiscord = '[wasabi_discord] You must have Discord downloaded, installed, and running to connect!',
+    error = '[wasabi_discord] An error has occured, please try again!'
+
 }
