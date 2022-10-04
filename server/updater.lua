@@ -5,7 +5,7 @@
 local curVersion = GetResourceMetadata(GetCurrentResourceName(), "version")
 local resourceName = "wasabi_discord"
 
-if Config.checkForUpdate then
+if Config.checkForUpdates then
     CreateThread(function()
         if GetCurrentResourceName() ~= "wasabi_discord" then
             resourceName = "wasabi_discord (" .. GetCurrentResourceName() .. ")"
