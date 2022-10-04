@@ -5,63 +5,87 @@ local fToken = 'Bot '..Config.DiscordInfo.botToken
 players, connectInfo = {}, {}
 local pCard = json.decode(LoadResourceFile(GetCurrentResourceName(), 'adaptiveCard.json'))
 
-if Config.DiscordWhitelist.enabled then
-    AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
-        local whitelisted
-        deferrals.defer()
-        local roles = Config.DiscordWhitelist.whitelistedRoles
-        for i=1, #roles do
-            local hasRole = checkRole(source, roles[i])
-            if hasRole then
-                whitelisted = true
-                break
-            end
-        end
-        if whitelisted then
-            deferrals.done()
-        else
-            setKickReason(Config.DiscordWhitelist.deniedMessage)
-        end
-    end)
-end
-
 if Config.DiscordQueue.enabled then
     StopResource('hardcap')
-    AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
-        local _source = source
-        local discordId
-        deferrals.defer()
-        Wait(100)
-        deferrals.update(Config.DiscordQueue.strings.verifyConnection)
+end
+
+
+AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
+    local _source = source
+    local discordId
+    deferrals.defer()
+    Wait(100)
+    deferrals.update(strings.verifyConnection)
+    Wait(250)
+    for k,v in ipairs(GetPlayerIdentifiers(_source)) do
+        if string.sub(v, 1, string.len('discord:')) == 'discord:' then
+            discordId = v
+        end
+    end
+    Wait(250)
+    if not discordId then
+        deferrals.done(strings.noDiscord)
+        CancelEvent()
+    end
+    if Config.DiscordWhitelist.enabled then
+        deferrals.update(strings.verifyDiscord)
         Wait(250)
-        for k,v in ipairs(GetPlayerIdentifiers(_source)) do
-            if string.sub(v, 1, string.len('discord:')) == 'discord:' then
-                discordId = v
+        local whitelisted
+        local roles = Config.DiscordWhitelist.whitelistedRoles
+        for i=1, #roles do
+            local discRole = nil
+            local dId = string.gsub(discordId, 'discord:', '')
+            local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, dId)
+            local member = discordRequest("GET", endpoint, {})
+            if member.code == 404 then
+                deferrals.done(strings.notInDiscord)
+                return
+            elseif member.code ~= 200 then
+                deferrals.done(strings.error)
+                return
+            end
+            local data = json.decode(member.data)
+            for k,v in ipairs(data.roles) do
+                if roles[i] == v then
+                    whitelisted = true
+                    break
+                end
             end
         end
-        if not discordId then
-            deferrals.done(Config.DiscordQueue.strings.noDiscord)
+        if not whitelisted then
+            deferrals.done(Config.DiscordWhitelist.deniedMessage)
             CancelEvent()
         end
+        if Config.DiscordQueue.enabled then
+            deferrals.update(strings.verifyQueue)
+            Wait(1000)
+        else
+            deferrals.done()
+        end
+    end
+    if Config.DiscordQueue.enabled then
+        Wait(50)
         if not processQueue(discordId, deferrals, _source) then
             CancelEvent()
         end
-    end)
+    end
+end)
 
-    AddEventHandler('playerDropped', function(reason)
-        local _source = source
+AddEventHandler('playerDropped', function(reason)
+    local _source = source
+    if Config.DiscordQueue.enabled then
         removeFromQueue(GetPlayerIdentifier(_source, 3))
-    end)
+    end
+end)
 
-    RegisterServerEvent('wasabi_discord:removeFromQueue')
-    AddEventHandler('wasabi_discord:removeFromQueue', function()
-        for k, v in pairs(connectInfo) do
-            if v.discordId == GetPlayerIdentifier(source, 3) then
-                table.remove(connectInfo, k)
-            end
+RegisterServerEvent('wasabi_discord:removeFromQueue')
+AddEventHandler('wasabi_discord:removeFromQueue', function()
+    for k, v in pairs(connectInfo) do
+        if v.discordId == GetPlayerIdentifier(source, 3) then
+            table.remove(connectInfo, k)
         end
-    end)
-end
+    end
+end)
 
 lib.callback.register('wasabi_discord:getConfig', function(source)
     local cConfig = copyTable(Config)
@@ -111,10 +135,11 @@ if Config.DiscordQueue.enabled then
         local member = json.decode(memberRaw.data)
         print(memberRaw.code)
         if memberRaw.code == 404 then
-            deferrals.done(Config.DiscordQueue.strings.notInDiscord)
+            deferrals.done(strings.notInDiscord)
             return
         elseif memberRaw.code ~= 200 then
-            deferrals.done(Config.DiscordQueue.strings.error)
+            print('Line 144')
+            deferrals.done(strings.error)
             return
         end
         for k,v in ipairs(member.roles) do
@@ -151,7 +176,7 @@ if Config.DiscordQueue.enabled then
             for k,v in ipairs(players) do
                 if v.discordId == discordId and (GetPlayerPing(v.source) == 0) then
                     removeFromQueue(discordId)
-                    deferrals.done(Config.DiscordQueue.strings.error)
+                    deferrals.done(strings.error)
                     return false
                 end
             end
@@ -292,7 +317,6 @@ checkRole = function(source, role)
     for _,v in ipairs(GetPlayerIdentifiers(_source)) do
         if string.match(v, 'discord:') then
             discId = string.gsub(v, 'discord:', '')
-            break
         end
     end
     local discRole = nil
