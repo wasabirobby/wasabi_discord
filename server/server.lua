@@ -49,6 +49,7 @@ if Config.DiscordQueue.enabled then
     end)
 
     AddEventHandler('playerDropped', function(reason)
+        local _source = source
         removeFromQueue(GetPlayerIdentifier(_source, 3))
     end)
 
