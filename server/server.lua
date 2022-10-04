@@ -108,6 +108,10 @@ if Config.DiscordQueue.enabled then
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
+        if not member.roles then
+            deferrals.setKickReason(Config.DiscordQueue.strings.notInDiscord)
+            return
+        end
         for k,v in ipairs(member.roles) do
             for i=1, #Config.DiscordQueue.roles do
                 if v == Config.DiscordQueue.roles[i].roleId then
