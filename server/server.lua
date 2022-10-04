@@ -109,7 +109,6 @@ if Config.DiscordQueue.enabled then
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
-        print(memberRaw.code)
         if memberRaw.code == 404 then
             deferrals.done(Config.DiscordQueue.strings.notInDiscord)
             return
