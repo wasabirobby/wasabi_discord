@@ -53,8 +53,8 @@ if Config.DiscordQueue.enabled then
         removeFromQueue(GetPlayerIdentifier(_source, 3))
     end)
 
-    RegisterServerEvent('ws_discord:removeFromQueue')
-    AddEventHandler('ws_discord:removeFromQueue', function()
+    RegisterServerEvent('wasabi_discord:removeFromQueue')
+    AddEventHandler('wasabi_discord:removeFromQueue', function()
         for k, v in pairs(connectInfo) do
             if v.discordId == GetPlayerIdentifier(source, 3) then
                 table.remove(connectInfo, k)
@@ -63,18 +63,18 @@ if Config.DiscordQueue.enabled then
     end)
 end
 
-lib.callback.register('ws_discord:getConfig', function(source)
+lib.callback.register('wasabi_discord:getConfig', function(source)
     local cConfig = copyTable(Config)
     cConfig.DiscordInfo = nil 
     return cConfig
 end)
 
-lib.callback.register('ws_discord:checkForRole', function(source, role)
+lib.callback.register('wasabi_discord:checkForRole', function(source, role)
     local hasRole = checkRole(source, role)
     return hasRole
 end)
 
-lib.callback.register('ws_discord:getRoles', function(source, role)
+lib.callback.register('wasabi_discord:getRoles', function(source, role)
     local roles = getRoles(source)
     return roles
 end)
