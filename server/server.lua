@@ -40,8 +40,8 @@ if Config.DiscordQueue.enabled then
             end
         end
         if not discordId then
-            setKickReason(Config.DiscordQueue.strings.noDiscord)
-            CancelEvent()
+            deferrals.done(Config.DiscordQueue.strings.noDiscord)
+            return
         end
         if not processQueue(discordId, deferrals, _source) then
             CancelEvent()
@@ -49,7 +49,6 @@ if Config.DiscordQueue.enabled then
     end)
 
     AddEventHandler('playerDropped', function(reason)
-        local _source = source
         removeFromQueue(GetPlayerIdentifier(_source, 3))
     end)
 
@@ -109,11 +108,8 @@ if Config.DiscordQueue.enabled then
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
-        if memberRaw.code == 404 then
-            deferrals.done(Config.DiscordQueue.strings.notInDiscord)
-            return
-        elseif memberRaw.code ~= 200 then
-            deferrals.done(Config.DiscordQueue.strings.error)
+        if not member.roles then
+            deferrals.setKickReason(Config.DiscordQueue.strings.notInDiscord)
             return
         end
         for k,v in ipairs(member.roles) do
