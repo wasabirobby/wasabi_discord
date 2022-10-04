@@ -18,7 +18,7 @@ Config.DiscordWhitelist = { -- Restrict if someone can fly in if they lack speci
 }
 
 Config.DiscordQueue = {
-    enabled = true, -- Enable? If set to true, any roles in this with be whitelisted
+    enabled = false, -- Enable? Requires
     maxConnections = 64, -- How many slots do you have avaliable in total for server
     title = 'Wasabi Scripts', -- Maybe server name here?
 
@@ -77,8 +77,5 @@ Config.DiscordQueue = {
         notInDiscord = '[ws_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
         noDiscord = '[ws_discord] You must have Discord downloaded, installed, and running to connect!',
         error = '[ws_discord] An error has occured, please try again!'
-        
-
-
     }
 }
