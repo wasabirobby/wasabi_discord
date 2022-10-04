@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 description 'Wasabi Extended Discord Wrapper'
-version '1.0.4'
+version '1.0.5'
 
 client_scripts {
   'client/*.lua'
