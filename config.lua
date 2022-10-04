@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+local seconds = 1000
 Config = {}
 
 Config.DiscordInfo = {
@@ -19,6 +20,7 @@ Config.DiscordWhitelist = { -- Restrict if someone can fly in if they lack speci
 
 Config.DiscordQueue = {
     enabled = true, -- Enable? Requires
+    refreshTime = 2.5 * seconds -- How long between queue refreshes(Default: 2.5 * seconds)
     maxConnections = 64, -- How many slots do you have avaliable in total for server
     title = 'Wasabi Scripts', -- Maybe server name here?
 
