@@ -4,6 +4,8 @@
 local seconds = 1000
 Config = {}
 
+Config.checkForUpdates = true -- Check for updates?
+
 Config.DiscordInfo = {
     botToken = 'BOT_TOKEN_HERE', -- Your Discord bot token here
     guildID = 'GUILD_ID_HERE', -- Your Discord's server ID here(Aka Guild ID)
