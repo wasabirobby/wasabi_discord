@@ -70,12 +70,12 @@ Config.DiscordQueue = {
 
     },
     strings = {
-        verifyConnection = '[ws_discord] Verifying connection...',
-        verifyLauncher = '[ws_discord] Verifying Launcher...',
-        verifyDiscord = '[ws_discord] Verifying Discord...',
-        verifyQueue = '[ws_discord] Adding to queue...',
-        notInDiscord = '[ws_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
-        noDiscord = '[ws_discord] You must have Discord downloaded, installed, and running to connect!',
-        error = '[ws_discord] An error has occured, please try again!'
+        verifyConnection = '[wasabi_discord] Verifying connection...',
+        verifyLauncher = '[wasabi_discord] Verifying Launcher...',
+        verifyDiscord = '[wasabi_discord] Verifying Discord...',
+        verifyQueue = '[wasabi_discord] Adding to queue...',
+        notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
+        noDiscord = '[wasabi_discord] You must have Discord downloaded, installed, and running to connect!',
+        error = '[wasabi_discord] An error has occured, please try again!'
     }
 }
