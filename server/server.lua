@@ -20,7 +20,7 @@ if Config.DiscordWhitelist.enabled then
         if whitelisted then
             deferrals.done()
         else
-            setKickReason(Config.DiscordWhitelist.deniedMessage)
+            deferrals.done(Config.DiscordWhitelist.deniedMessage)
         end
     end)
 end
@@ -40,7 +40,7 @@ if Config.DiscordQueue.enabled then
             end
         end
         if not discordId then
-            setKickReason(Config.DiscordQueue.strings.noDiscord)
+            deferrals.done(Config.DiscordQueue.strings.noDiscord)
             return
         end
         if not processQueue(discordId, deferrals, _source) then
@@ -109,8 +109,12 @@ if Config.DiscordQueue.enabled then
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
-        if not member.roles then
-            deferrals.setKickReason(Config.DiscordQueue.strings.notInDiscord)
+        print(memberRaw.code)
+        if memberRaw.code == 404 then
+            deferrals.done(Config.DiscordQueue.strings.notInDiscord)
+            return
+        elseif memberRaw.code ~= 200 then
+            deferrals.done(Config.DiscordQueue.strings.error)
             return
         end
         for k,v in ipairs(member.roles) do
