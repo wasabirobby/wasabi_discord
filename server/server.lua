@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 local fToken = 'Bot '..Config.DiscordInfo.botToken
 players, connectInfo = {}, {}
 local pCard = json.decode(LoadResourceFile(GetCurrentResourceName(), 'adaptiveCard.json'))
@@ -121,7 +122,7 @@ discordRequest = function(method, endpoint, jsondata)
         data = {data=resultData, code=errorCode, headers=resultHeaders}
     end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = fToken})
     while data == nil do
-        Wait(0)
+        Wait()
     end
     return data
 end

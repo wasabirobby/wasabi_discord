@@ -1,3 +1,7 @@
+-----------------For support, scripts, and more----------------
+--------------- https://discord.gg/wasabiscripts  -------------
+---------------------------------------------------------------
+
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
