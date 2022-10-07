@@ -10,7 +10,6 @@ if Config.DiscordQueue.enabled then
     StopResource('hardcap')
 end
 
-
 AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
     local _source = source
     local discordId
@@ -105,7 +104,6 @@ lib.callback.register('wasabi_discord:getRoles', function(source, role)
 end)
 
 -- Functions
-
 copyTable = function(obj, seen)
     if type(obj) ~= 'table' then return obj end
     if seen and seen[obj] then return seen[obj] end

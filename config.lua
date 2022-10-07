@@ -72,7 +72,6 @@ Config.DiscordQueue = {
             roleId = 'ROLE_ID_HERE',
             points = 60
         },
-
     }
 }
 
@@ -84,5 +83,4 @@ strings = {
     notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
     noDiscord = '[wasabi_discord] You must have Discord downloaded, installed, and running to connect!',
     error = '[wasabi_discord] An error has occured, please try again!'
-
 }
