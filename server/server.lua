@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 local fToken = 'Bot '..Config.DiscordInfo.botToken
 players, connectInfo = {}, {}
 local pCard = json.decode(LoadResourceFile(GetCurrentResourceName(), 'adaptiveCard.json'))
@@ -8,7 +9,6 @@ local pCard = json.decode(LoadResourceFile(GetCurrentResourceName(), 'adaptiveCa
 if Config.DiscordQueue.enabled then
     StopResource('hardcap')
 end
-
 
 AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
     local _source = source
@@ -104,7 +104,6 @@ lib.callback.register('wasabi_discord:getRoles', function(source, role)
 end)
 
 -- Functions
-
 copyTable = function(obj, seen)
     if type(obj) ~= 'table' then return obj end
     if seen and seen[obj] then return seen[obj] end
@@ -121,7 +120,7 @@ discordRequest = function(method, endpoint, jsondata)
         data = {data=resultData, code=errorCode, headers=resultHeaders}
     end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = fToken})
     while data == nil do
-        Wait(0)
+        Wait()
     end
     return data
 end
