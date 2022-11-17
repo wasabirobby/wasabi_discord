@@ -228,7 +228,7 @@ if Config.DiscordQueue.enabled then
         card.body[2].height = Config.DiscordQueue.image.height 
         card.body[3].items[1].text = Config.DiscordQueue.currentQueueText
         card.body[3].items[2].text = message
-        card.body[4].text = (Config.DiscordQueue.currentSpotText):format(tostring(#players), #GetPlayers(), Config.DiscordQueue.maxConnections)
+        card.body[4].text = (Config.DiscordQueue.currentSpotText):format(tostring(#players), #GetPlayers(), tonumber(Config.DiscordQueue.maxConnections))
         card.body[5].text = Config.DiscordQueue.footerText
         card.body[6].actions[1].title = Config.DiscordQueue.buttons.button1.title
         card.body[6].actions[1].iconUrl = Config.DiscordQueue.buttons.button1.iconUrl 
@@ -369,7 +369,7 @@ CreateThread(function()
     while true do 
         Wait(3000)
         checkQueue()
-        if #players > 0 and #connectInfo + #GetPlayers() < Config.DiscordQueue.maxConnections then
+        if #players > 0 and #connectInfo + #GetPlayers() < tonumber(Config.DiscordQueue.maxConnections) then
             firstQueued()
         end
     end
