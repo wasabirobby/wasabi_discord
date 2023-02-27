@@ -80,7 +80,7 @@ strings = {
     verifyLauncher = '[wasabi_discord] Verifying Launcher...',
     verifyDiscord = '[wasabi_discord] Verifying Discord...',
     verifyQueue = '[wasabi_discord] Adding to queue...',
-    notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/wasabiscripts to fly in!',
+    notInDiscord = '[wasabi_discord] You must join the discord: https://discord.gg/ to fly in!',
     noDiscord = '[wasabi_discord] You must have Discord downloaded, installed, and running to connect!',
     error = '[wasabi_discord] An error has occured, please try again!'
 }
