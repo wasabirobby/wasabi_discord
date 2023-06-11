@@ -19,7 +19,7 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
     Wait(250)
     for k,v in ipairs(GetPlayerIdentifiers(_source)) do
         if string.sub(v, 1, string.len('discord:')) == 'discord:' then
-            discordId = v
+            discordId = string.sub(v, '9')
         end
     end
     Wait(250)
@@ -34,7 +34,7 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
         local roles = Config.DiscordWhitelist.whitelistedRoles
         for i=1, #roles do
             local discRole = nil
-            local dId = string.gsub(discordId, 'discord:', '')
+            local dId = discordId
             local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, dId)
             local member = discordRequest("GET", endpoint, {})
             if member.code == 404 then
@@ -128,7 +128,7 @@ end
 if Config.DiscordQueue.enabled then
     processQueue = function(discordId, deferrals, serverId)
         local data = {name = nil, pts = 0}
-        local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, string.gsub(discordId, 'discord:', ''))
+        local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, discordId)
         local memberRaw = discordRequest("GET", endpoint, {})
         local roleNames, firstRole = '', false
         local member = json.decode(memberRaw.data)
@@ -313,7 +313,7 @@ checkRole = function(source, role)
     local discId = nil
     for _,v in ipairs(GetPlayerIdentifiers(_source)) do
         if string.match(v, 'discord:') then
-            discId = string.gsub(v, 'discord:', '')
+            discId = string.sub(v, '9')
         end
     end
     local discRole = nil
@@ -347,9 +347,8 @@ getRoles = function(source)
     local _source = source
     local discId = nil
     for _,v in ipairs(GetPlayerIdentifiers(_source)) do
-        if string.match(v, 'discord:') then
-            discId = string.gsub(v, 'discord:', '')
-            break
+        if string.sub(v, 1, string.len('discord:')) == 'discord:' then
+            discId = v
         end
     end
     local endpoint = ('guilds/%s/members/%s'):format(Config.DiscordInfo.guildID, discId)
