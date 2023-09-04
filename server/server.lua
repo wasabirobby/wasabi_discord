@@ -368,7 +368,9 @@ exports('getRoles', getRoles)
 CreateThread(function()
     while true do 
         Wait(3000)
-        checkQueue()
+        if Config.DiscordQueue.enabled then
+            checkQueue()
+        end
         if #players > 0 and #connectInfo + #GetPlayers() < tonumber(Config.DiscordQueue.maxConnections) then
             firstQueued()
         end
